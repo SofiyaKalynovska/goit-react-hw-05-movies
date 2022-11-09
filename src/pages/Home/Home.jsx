@@ -21,10 +21,9 @@ export const Home = () => {
       try {
         setIsLoading(true);
         const arrOfMovies = await fetchTrending();
-        setTrendingMovies(prevState => [...prevState, ...arrOfMovies.results]);
-        console.log(arrOfMovies.results);
+        setTrendingMovies([...arrOfMovies.results]);
       } catch (error) {
-        console.log(error);
+        toast.error('Something happened with trending movies :(');
       } finally {
         setIsLoading(false);
       }

@@ -16,7 +16,7 @@ export const fetchSearchMovie = async (query) => {
       query: `${query}`,
     }
   })
-  console.log(response.data)
+ 
   return response.data
 }
 
@@ -26,7 +26,7 @@ export const fetchMovieDetails = async (movie_id) => {
       api_key: API_KEY,
     }
   })
-  console.log(response.data)
+
   return response.data
 }
 
@@ -36,7 +36,7 @@ export const fetchMovieCast = async (movie_id) => {
       api_key: API_KEY,
     }
   })
-  console.log(response.data)
+  
   return response.data
 }
 
