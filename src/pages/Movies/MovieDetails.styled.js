@@ -26,3 +26,8 @@ export const MovieText = styled.p`
 font-size: 24px;
 margin-bottom: 20px;
 `
+export const AdditionalInfoTitle = styled.h3`
+font-size: 26px;
+font-weight: 500;
+margin-bottom: 20px;
+`

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Loading } from 'components/Loading/Loading';
 import { fetchMovieDetails } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,6 +11,7 @@ import {
   MovieTitle,
   MovieDetailsPartTitle,
   MovieText,
+  AdditionalInfoTitle,
 } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
@@ -63,6 +64,11 @@ export const MovieDetails = () => {
           <MovieText>{genresList}</MovieText>
         </MovieInfo>
       </InfoSection>
+      <div>
+        <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>
+        <Link to="cast" >Cast</Link>
+        <Link to="reviews">Reviews</Link>
+      </div>
       {isLoading && <Loading isLoading={isLoading} />}
       <ToastContainer />
     </>
