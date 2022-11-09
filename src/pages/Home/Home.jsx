@@ -10,6 +10,8 @@ import {
 } from './Home.styled';
 import { Loading } from 'components/Loading/Loading';
 import { Link } from 'react-router-dom';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -44,6 +46,7 @@ export const Home = () => {
           </MovieItem>
         ))}
       </MoviesList>
+      <ToastContainer />
     </>
   );
 };

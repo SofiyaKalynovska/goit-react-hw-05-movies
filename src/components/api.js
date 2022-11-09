@@ -9,12 +9,11 @@ export const fetchTrending = async () => {
   console.log(response.data)
   return response.data
 }
-export const fetchSearchMovie = async (query, page) => {
+export const fetchSearchMovie = async (query) => {
   const response = await axios.get('search/movie?', {
     params: {
       api_key: API_KEY,
       query: `${query}`,
-      page: `${page}`,
     }
   })
   console.log(response.data)
