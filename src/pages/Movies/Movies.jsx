@@ -4,13 +4,7 @@ import {
   SearchFormBtnLabel,
   SearchFormInput,
 } from './Movies.styled';
-import {
-  MoviesList,
-  MovieItem,
-  MovieTitle,
-  Poster,
-} from 'pages/Home/Home.styled';
-import { Link } from 'react-router-dom';
+import { List } from 'components/MoviesList/MoviesList';
 import { ReactComponent as SearchIcon } from '../../icons/SearchIcon.svg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -78,20 +72,7 @@ export const Movies = () => {
           <SearchFormBtnLabel>Search</SearchFormBtnLabel>
         </SearchFormBtn>
       </SearchForm>
-      {!!movies.length && (
-        <MoviesList>
-          {movies.map(({ id, title, poster_path }) => (
-            <MovieItem key={id}>
-              <Link to={`movies/${id}`}>
-                <MovieTitle>{title}</MovieTitle>
-                <Poster
-                  src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-                />
-              </Link>
-            </MovieItem>
-          ))}
-        </MoviesList>
-      )}
+      {!!movies.length && <List listToRender={movies} />}
       {isLoading && <Loading isLoading={isLoading} />}
       <ToastContainer />
     </>

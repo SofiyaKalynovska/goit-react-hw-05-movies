@@ -9,7 +9,6 @@ export const SearchForm = styled.form`
   border-radius: 3px;
   overflow: hidden;
 `
-
 export const SearchFormBtn = styled.button`
   display: inline-block;
   width: 48px;
@@ -27,7 +26,6 @@ export const SearchFormBtn = styled.button`
     opacity: 1;
   }
 `
-
 export const SearchFormBtnLabel = styled.span`
   position: absolute;
   width: 1px;
@@ -39,7 +37,6 @@ export const SearchFormBtnLabel = styled.span`
   clip-path: inset(50%);
   border: 0;
 `
-
 export const SearchFormInput = styled.input`
   display: inline-block;
   width: 100%;
