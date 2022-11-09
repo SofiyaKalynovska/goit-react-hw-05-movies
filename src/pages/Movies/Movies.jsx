@@ -55,7 +55,7 @@ export const Movies = () => {
     }
     setMovies([]);
     setSearchParams({ query: queryToSearch });
-    form.reset();
+    // form.reset();
   };
   return (
     <>
@@ -72,7 +72,7 @@ export const Movies = () => {
           <SearchFormBtnLabel>Search</SearchFormBtnLabel>
         </SearchFormBtn>
       </SearchForm>
-      {!!movies.length && <List listToRender={movies} />}
+      {!!movies.length && <List listToRender={movies} addedPath={""}/>}
       {isLoading && <Loading isLoading={isLoading} />}
       <ToastContainer />
     </>

@@ -29,7 +29,7 @@ export const Home = () => {
     <>
       <Title>Trending today</Title>
       {isLoading && <Loading isLoading={isLoading} />}
-      <List listToRender={trendingMovies} />
+      <List listToRender={trendingMovies} addedPath={'movies/'} />
       <ToastContainer />
     </>
   );
