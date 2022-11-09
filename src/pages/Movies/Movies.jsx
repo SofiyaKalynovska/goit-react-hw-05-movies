@@ -32,39 +32,35 @@ export const Movies = () => {
     async function getSearchMovies() {
       setIsLoading(true);
       try {
-          const arrOfMovies = await fetchSearchMovie(movieToSearch);
+        const arrOfMovies = await fetchSearchMovie(movieToSearch);
 
-          if (arrOfMovies.results.length === 0) {
-            toast.info('Sorry, we did not find any images:( Try another word');
-            return;
-          }
-          setMovies([...arrOfMovies.results]);
-         
-        } catch (error) {
-          toast.error('Something went wrong! Please try again!');
-        } finally {
-          setIsLoading(false);
+        if (arrOfMovies.results.length === 0) {
+          toast.info('Sorry, we did not find any images:( Try another word');
+          return;
         }
-      
+        setMovies([...arrOfMovies.results]);
+      } catch (error) {
+        toast.error('Something went wrong! Please try again!');
+      } finally {
+        setIsLoading(false);
+      }
     }
-    // if (!movieToSearch) {
-    //   toast.error('Please provide new word for search');
-    //   return;
-    // }
     getSearchMovies();
   }, [movieToSearch]);
 
   const handleSubmit = e => {
     e.preventDefault();
-    setMovies([]);
+
     const form = e.currentTarget;
     const queryToSearch = form.elements.query.value;
-    if (queryToSearch === '') {
+
+    if (queryToSearch === '' || searchParams.get('query') === queryToSearch) {
       toast.error('Please provide new word for search');
+      form.reset();
       return;
     }
-    setSearchParams({ query:  queryToSearch});
-    
+    setMovies([]);
+    setSearchParams({ query: queryToSearch });
     form.reset();
   };
   return (
