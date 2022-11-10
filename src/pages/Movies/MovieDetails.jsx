@@ -11,7 +11,6 @@ import {
   MovieDetailsPartTitle,
   MovieText,
   AdditionalInfoTitle,
-  LinksWrapper
 } from './MovieDetails.styled';
 
 export const MovieDetails = () => {

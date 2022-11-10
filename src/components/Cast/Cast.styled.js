@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const CastList = styled.ul`
 margin-bottom: 10px;
+padding: 20px;
 display: flex;
 flex-wrap: wrap;
 gap: 20px;
@@ -14,8 +15,8 @@ flex-direction: column;
 width: 300px;
 `
 export const CastPhoto = styled.img`
-max-width: 200px;
-max-height: 300px;
+width: 200px;
+height: 300px;
 margin: 0 auto;
 `
 export const CastText = styled.p`
