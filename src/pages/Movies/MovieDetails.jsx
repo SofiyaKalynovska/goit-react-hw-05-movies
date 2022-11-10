@@ -1,6 +1,5 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import {  Outlet, useParams } from 'react-router-dom';
+import { useEffect, useState, Suspense } from 'react';
+import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
 import { fetchMovieDetails } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
 import {
@@ -14,13 +13,16 @@ import {
   AdditionalInfoLink,
   AdditionalInfoLinkItem,
 } from './MovieDetails.styled';
+import { Loading } from 'components/Loading/Loading';
 
 export const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [genres, setGenres] = useState([]);
   const [poster, setPoster] = useState('');
-
+  const location = useLocation();
+  const backLinkHref = location.state?.from ?? '/';
+  
   useEffect(() => {
     async function getDetails() {
       try {
@@ -41,6 +43,7 @@ export const MovieDetails = () => {
   const { original_title, overview, vote_average, release_date } = movieDetails;
   return (
     <>
+      <Link to={backLinkHref}>Go back</Link>
       <InfoSection>
         <MovieImg
           src={
@@ -67,13 +70,19 @@ export const MovieDetails = () => {
         <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>
         <ul>
           <AdditionalInfoLinkItem>
-            <AdditionalInfoLink to="cast">Cast</AdditionalInfoLink>
+            <AdditionalInfoLink to="cast" state={location.state}>
+              Cast
+            </AdditionalInfoLink>
           </AdditionalInfoLinkItem>
           <AdditionalInfoLinkItem>
-            <AdditionalInfoLink to="reviews">Reviews</AdditionalInfoLink>
+            <AdditionalInfoLink to="reviews" state={location.state}>
+              Reviews
+            </AdditionalInfoLink>
           </AdditionalInfoLinkItem>
         </ul>
-        <Outlet />
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
       </div>
       <ToastContainer />
     </>

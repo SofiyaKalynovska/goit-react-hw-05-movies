@@ -15,19 +15,16 @@ export const fetchSearchMovie = async (query) => {
       query: `${query}`,
     }
   })
- 
   return response.data
 }
 
 export const fetchMovieDetails = async (movie_id) => {
   const response = await axios.get(`movie/${movie_id}?api_key=${API_KEY}`)
-
   return response.data
 }
 
 export const fetchMovieCast = async (movie_id) => {
   const response = await axios.get(`movie/${movie_id}/credits?api_key=${API_KEY}`)
-  
   return response.data
 }
 
@@ -36,6 +33,6 @@ export async function fetchMovieReviews(movie_id) {
     const response = await axios.get(`movie/${movie_id}/reviews?api_key=${API_KEY}`)
     return response.data
   } catch (error) {
-    new Error ('Page not found')
+    new Error('Page not found')
   }
 }

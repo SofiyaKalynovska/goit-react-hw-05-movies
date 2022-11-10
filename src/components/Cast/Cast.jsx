@@ -36,7 +36,7 @@ export const Cast = () => {
                 src={
                   profile_path
                     ? `https://image.tmdb.org/t/p/w500/${profile_path}`
-                    : `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGLJfKaGbymfs6A97-1Lxqj0DXgzUnLBVBFQ&usqp=CAU `
+                    : `https://thesource.sa.ua.edu/wp-content/uploads/sites/57/2019/08/no-person-200x300-200x300.png`
                 }
                 alt={original_name}
               />

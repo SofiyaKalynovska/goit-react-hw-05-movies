@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import { MutatingDots } from 'react-loader-spinner';
 import { LoadingBox } from './Loading.styled';
 
-export const Loading = ({ isLoading }) => {
+export const Loading = () => {
   return (
     <LoadingBox>
       <MutatingDots
@@ -15,12 +14,8 @@ export const Loading = ({ isLoading }) => {
         wrapperStyle={{}}
         wrapperClass=""
         margin="auto"
-        visible={isLoading}
+        visible={true}
       />
     </LoadingBox>
   );
-};
-
-Loading.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
 };
