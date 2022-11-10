@@ -31,8 +31,11 @@ export const fetchMovieCast = async (movie_id) => {
   return response.data
 }
 
-export const fetchMovieReviews = async (movie_id) => {
-  const response = await axios.get(`movie/${movie_id}/reviews?api_key=${API_KEY}`)
- 
-  return response.data
+export async function fetchMovieReviews(movie_id) {
+  try {
+    const response = await axios.get(`movie/${movie_id}/reviews?api_key=${API_KEY}`)
+    return response.data
+  } catch (error) {
+    new Error ('Page not found')
+  }
 }

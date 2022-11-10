@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Loading } from 'components/Loading/Loading';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
 import {
@@ -22,21 +21,21 @@ export const MovieDetails = () => {
   const [poster, setPoster] = useState('');
   
   
-  const [isLoading, setIsLoading] = useState(false);
+  
 
   useEffect(() => {
     async function getDetails() {
-      setIsLoading(true);
+      
       try {
-        const details = await fetchMovieDetails(movieId);
-        setMovieDetails(details);
-        setGenres(details.genres);
-        setPoster(details.poster_path);
+        await fetchMovieDetails(movieId).then(details => {
+          setMovieDetails(details);
+          setGenres(details.genres);
+          setPoster(details.poster_path);
+        })
+        
       } catch (error) {
         toast.error('Something went wrong! Please try again!');
-      } finally {
-        setIsLoading(false);
-      }
+      } 
     }
     getDetails();
   }, [movieId]);
@@ -64,14 +63,18 @@ export const MovieDetails = () => {
           <MovieText>{genresList}</MovieText>
         </MovieInfo>
       </InfoSection>
-      <section>
+      <div>
         <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>
-        <LinksWrapper>
-          <Link to="cast">Cast</Link>
-          <Link to="reviews">Reviews</Link>
-        </LinksWrapper>
-      </section>
-      {isLoading && <Loading isLoading={isLoading} />}
+        <ul>
+          <li>
+            <Link to="cast">Cast</Link>
+          </li>
+          <li>
+            <Link to="reviews">Reviews</Link>
+          </li>
+        </ul>
+        <Outlet />
+      </div>
       <ToastContainer />
     </>
   );
