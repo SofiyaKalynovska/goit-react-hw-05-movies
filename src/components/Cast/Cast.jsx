@@ -5,7 +5,7 @@ import { fetchMovieCast } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
 import { CastItem, CastList, CastPhoto, CastText } from './Cast.styled';
 
-export const Cast = () => {
+const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
   
@@ -50,3 +50,4 @@ export const Cast = () => {
     )
   );
 };
+export default Cast;

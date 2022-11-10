@@ -8,12 +8,11 @@ import { List } from 'components/MoviesList/MoviesList';
 import { ReactComponent as SearchIcon } from '../../icons/SearchIcon.svg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState, useEffect, Suspense } from 'react';
+import { useState, useEffect } from 'react';
 import { useSearchParams, useLocation } from 'react-router-dom';
 import { fetchSearchMovie } from 'components/api';
-import { Loading } from 'components/Loading/Loading';
 
-export const Movies = () => {
+const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const location = useLocation();
@@ -34,7 +33,7 @@ export const Movies = () => {
         setMovies([...arrOfMovies.results]);
       } catch (error) {
         toast.error('Something went wrong! Please try again!');
-      } 
+      }
     }
     getSearchMovies();
   }, [movieToSearch]);
@@ -52,33 +51,27 @@ export const Movies = () => {
     }
     setMovies([]);
     setSearchParams({ query: queryToSearch });
-    
   };
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <SearchForm onSubmit={handleSubmit}>
-          <SearchFormInput
-            type="text"
-            autocomplete="off"
-            autoFocus
-            name="query"
-            placeholder="Provide search query"
-          />
-          <SearchFormBtn type="submit">
-            <SearchIcon />
-            <SearchFormBtnLabel>Search</SearchFormBtnLabel>
-          </SearchFormBtn>
-        </SearchForm>
-        {!!movies.length && (
-          <List
-            listToRender={movies}
-            addedPath={''}
-            state={{ from: location }}
-          />
-        )}
-        <ToastContainer />
-      </Suspense>
+      <SearchForm onSubmit={handleSubmit}>
+        <SearchFormInput
+          type="text"
+          autocomplete="off"
+          autoFocus
+          name="query"
+          placeholder="Provide search query"
+        />
+        <SearchFormBtn type="submit">
+          <SearchIcon />
+          <SearchFormBtnLabel>Search</SearchFormBtnLabel>
+        </SearchFormBtn>
+      </SearchForm>
+      {!!movies.length && (
+        <List listToRender={movies} addedPath={''} state={{ from: location }} />
+      )}
+      <ToastContainer />
     </>
   );
 };
+export default Movies;

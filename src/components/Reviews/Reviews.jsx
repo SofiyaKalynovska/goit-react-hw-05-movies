@@ -10,7 +10,7 @@ import {
   ReviewText,
 } from './Reviews.styled';
 
-export const Reviews = () => {
+const Reviews = () => {
   const { movieId } = useParams();
   const [movieReviews, setMovieReviews] = useState([]);
   
@@ -50,5 +50,5 @@ export const Reviews = () => {
     </>
   );
 };
-
+export default Reviews;
 

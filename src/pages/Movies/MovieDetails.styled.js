@@ -2,14 +2,21 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export const InfoSection = styled.section`
-display: flex;
-gap: 10px;
-align-items: center;
+margin-top: 20px;
 box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+@media screen and (min-width: 768px){
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+}
 `
 export const MovieImg = styled.img`
-width: 500px;
+max-width: 500px;
 height: 550px;
+@media screen and (max-width: 768px){
+  margin: auto;
+}
 `
 export const MovieInfo = styled.div`
 padding: 20px 10px;

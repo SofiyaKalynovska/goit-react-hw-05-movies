@@ -1,5 +1,5 @@
 import { useEffect, useState, Suspense } from 'react';
-import { Outlet, useParams, useLocation, Link } from 'react-router-dom';
+import { Outlet, useParams, useLocation} from 'react-router-dom';
 import { fetchMovieDetails } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
 import {
@@ -15,7 +15,7 @@ import {
 } from './MovieDetails.styled';
 import { Loading } from 'components/Loading/Loading';
 
-export const MovieDetails = () => {
+const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState([]);
   const [genres, setGenres] = useState([]);
@@ -43,7 +43,7 @@ export const MovieDetails = () => {
   const { original_title, overview, vote_average, release_date } = movieDetails;
   return (
     <>
-      <Link to={backLinkHref}>Go back</Link>
+      <AdditionalInfoLink to={backLinkHref}>Go back</AdditionalInfoLink>
       <InfoSection>
         <MovieImg
           src={
@@ -88,3 +88,4 @@ export const MovieDetails = () => {
     </>
   );
 };
+export default MovieDetails;

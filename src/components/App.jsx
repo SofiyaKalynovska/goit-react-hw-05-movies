@@ -1,14 +1,17 @@
 import { Routes, Route } from "react-router-dom"
 import { SharedLayout } from "./SharedLayout/SharedLayout";
-import { Home } from "pages/Home/Home";
-import { Movies } from "pages/Movies/Movies"
-import { MovieDetails } from "pages/Movies/MovieDetails";
-import { Cast } from "./Cast/Cast";
-import { Reviews } from "./Reviews/Reviews";
+import { lazy, Suspense } from "react";
+import { Loading } from "./Loading/Loading";
+
+const Movies = lazy(() => import('../pages/Movies/Movies'));
+const MovieDetails = lazy(() => import('../pages/Movies/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
+const Reviews = lazy(() => import('./Reviews/Reviews'));
+const Home = lazy(() => import('../pages/Home/Home'));
 
 export const App = () => {
   return (
-    <div>
+    <Suspense fallback={<Loading />}>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<Home />} />
@@ -20,6 +23,6 @@ export const App = () => {
           <Route path="*" element={<Home />} />
         </Route>
       </Routes>
-    </div>
+    </Suspense>
   );
 };
