@@ -12,7 +12,8 @@ margin: 10px;
 width: max-content;
 `
 export const Poster = styled.img`
-  max-width: 350px;
+  width: 350px;
+  height: 500px;
   margin-bottom: 10px;
   `
 export const MovieTitle = styled.h3`

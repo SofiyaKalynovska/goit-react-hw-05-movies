@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import {  Outlet, useParams } from 'react-router-dom';
 import { fetchMovieDetails } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
 import {
@@ -11,6 +11,8 @@ import {
   MovieDetailsPartTitle,
   MovieText,
   AdditionalInfoTitle,
+  AdditionalInfoLink,
+  AdditionalInfoLinkItem,
 } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
@@ -18,23 +20,18 @@ export const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState([]);
   const [genres, setGenres] = useState([]);
   const [poster, setPoster] = useState('');
-  
-  
-  
 
   useEffect(() => {
     async function getDetails() {
-      
       try {
         await fetchMovieDetails(movieId).then(details => {
           setMovieDetails(details);
           setGenres(details.genres);
           setPoster(details.poster_path);
-        })
-        
+        });
       } catch (error) {
         toast.error('Something went wrong! Please try again!');
-      } 
+      }
     }
     getDetails();
   }, [movieId]);
@@ -46,7 +43,11 @@ export const MovieDetails = () => {
     <>
       <InfoSection>
         <MovieImg
-          src={`https://image.tmdb.org/t/p/w500/${poster}`}
+          src={
+            !poster
+              ? `http://m.mooeraudio.com/public/img/no-img.svg`
+              : `https://image.tmdb.org/t/p/w500/${poster}`
+          }
           alt={original_title}
         />
         <MovieInfo>
@@ -65,12 +66,12 @@ export const MovieDetails = () => {
       <div>
         <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>
         <ul>
-          <li>
-            <Link to="cast">Cast</Link>
-          </li>
-          <li>
-            <Link to="reviews">Reviews</Link>
-          </li>
+          <AdditionalInfoLinkItem>
+            <AdditionalInfoLink to="cast">Cast</AdditionalInfoLink>
+          </AdditionalInfoLinkItem>
+          <AdditionalInfoLinkItem>
+            <AdditionalInfoLink to="reviews">Reviews</AdditionalInfoLink>
+          </AdditionalInfoLinkItem>
         </ul>
         <Outlet />
       </div>

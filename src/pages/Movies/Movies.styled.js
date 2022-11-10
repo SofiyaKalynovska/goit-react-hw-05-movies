@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const SearchForm = styled.form`
+margin: 0 auto;
   display: flex;
   align-items: center;
   width: 100%;
@@ -8,6 +9,7 @@ export const SearchForm = styled.form`
   background-color: #fff;
   border-radius: 3px;
   overflow: hidden;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 `
 export const SearchFormBtn = styled.button`
   display: inline-block;
@@ -38,9 +40,9 @@ export const SearchFormBtnLabel = styled.span`
   border: 0;
 `
 export const SearchFormInput = styled.input`
+
   display: inline-block;
   width: 100%;
-  font: inherit;
   font-size: 20px;
   border: none;
   outline: none;
