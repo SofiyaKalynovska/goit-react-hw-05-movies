@@ -8,22 +8,20 @@ import { CastItem, CastList, CastPhoto, CastText } from './Cast.styled';
 const Cast = () => {
   const { movieId } = useParams();
   const [cast, setCast] = useState([]);
-  
+
   useEffect(() => {
-    
-      async function getCast() {
-        
-        try {
-          fetchMovieCast(movieId).then(details => {
-            setCast(details.cast)
-        })
-          
-        } catch (error) {
-          toast.error('Something went wrong while cast loading! Please try again!');
-        } 
+    async function getCast() {
+      try {
+        fetchMovieCast(movieId).then(details => {
+          setCast(details.cast);
+        });
+      } catch (error) {
+        toast.error(
+          'Something went wrong while cast loading! Please try again!'
+        );
       }
-      getCast();
-    // }
+    }
+    getCast();
   }, [movieId]);
 
   return (

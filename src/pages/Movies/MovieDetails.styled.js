@@ -8,7 +8,6 @@ box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
   display: flex;
   gap: 10px;
   align-items: center;
-
 }
 `
 export const MovieImg = styled.img`
@@ -46,7 +45,6 @@ margin-bottom: 20px;
 export const AdditionalInfoLink = styled(Link)`
 padding-left: 20px;
 font-size: 26px;
-
 `
 
 

@@ -1,4 +1,5 @@
-import { MoviesList, MovieItem, MovieTitle, Poster } from './MoviesList.styled'
+import { MoviesList, MovieItem, MovieTitle, Poster } from './MoviesList.styled';
+import PropTypes from 'prop-types';
 import { Link, useLocation } from 'react-router-dom';
 
 export const List = ({ listToRender, addedPath }) => {
@@ -7,7 +8,7 @@ export const List = ({ listToRender, addedPath }) => {
     <MoviesList>
       {listToRender.map(({ id, title, poster_path }) => (
         <MovieItem key={id}>
-          <Link to={`${addedPath}${id}`} state={{ from: location }} >
+          <Link to={`${addedPath}${id}`} state={{ from: location }}>
             <MovieTitle>{title}</MovieTitle>
             <Poster
               src={
@@ -21,5 +22,14 @@ export const List = ({ listToRender, addedPath }) => {
       ))}
     </MoviesList>
   );
-}
-
+};
+List.propTypes = {
+  listToRender: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      poster_path: PropTypes.string,
+    })
+  ),
+  addedPath: PropTypes.string.isRequired,
+};

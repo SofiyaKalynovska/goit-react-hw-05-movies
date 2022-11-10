@@ -1,5 +1,5 @@
 import { useEffect, useState, Suspense } from 'react';
-import { Outlet, useParams, useLocation} from 'react-router-dom';
+import { Outlet, useParams, useLocation } from 'react-router-dom';
 import { fetchMovieDetails } from 'components/api';
 import { ToastContainer, toast } from 'react-toastify';
 import {
@@ -22,7 +22,7 @@ const MovieDetails = () => {
   const [poster, setPoster] = useState('');
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
-  
+
   useEffect(() => {
     async function getDetails() {
       try {

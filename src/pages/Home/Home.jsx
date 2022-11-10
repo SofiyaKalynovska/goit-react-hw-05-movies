@@ -9,7 +9,7 @@ import { List } from 'components/MoviesList/MoviesList';
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
   const location = useLocation();
-  
+
   useEffect(() => {
     async function getTrendingMovies() {
       try {
@@ -17,7 +17,7 @@ const Home = () => {
         setTrendingMovies([...arrOfMovies.results]);
       } catch (error) {
         toast.error('Something happened with trending movies :(');
-      } 
+      }
     }
 
     getTrendingMovies();
