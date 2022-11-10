@@ -31,3 +31,7 @@ font-size: 26px;
 font-weight: 500;
 margin-bottom: 20px;
 `
+export const LinksWrapper = styled.div`
+display: flex;
+flex-direction: column;
+`

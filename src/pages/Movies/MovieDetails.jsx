@@ -12,6 +12,7 @@ import {
   MovieDetailsPartTitle,
   MovieText,
   AdditionalInfoTitle,
+  LinksWrapper
 } from './MovieDetails.styled';
 
 export const MovieDetails = () => {
@@ -28,7 +29,6 @@ export const MovieDetails = () => {
       setIsLoading(true);
       try {
         const details = await fetchMovieDetails(movieId);
-        console.log(details);
         setMovieDetails(details);
         setGenres(details.genres);
         setPoster(details.poster_path);
@@ -56,7 +56,7 @@ export const MovieDetails = () => {
             {original_title} ({new Date(release_date).getFullYear()})
           </MovieTitle>
           <MovieText>
-            User Score: {Math.ceil((Number(vote_average) * 10))}%
+            User Score: {Math.ceil(Number(vote_average) * 10)}%
           </MovieText>
           <MovieDetailsPartTitle>Overview</MovieDetailsPartTitle>
           <MovieText>{overview}</MovieText>
@@ -64,11 +64,13 @@ export const MovieDetails = () => {
           <MovieText>{genresList}</MovieText>
         </MovieInfo>
       </InfoSection>
-      <div>
+      <section>
         <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>
-        <Link to="cast" >Cast</Link>
-        <Link to="reviews">Reviews</Link>
-      </div>
+        <LinksWrapper>
+          <Link to="cast">Cast</Link>
+          <Link to="reviews">Reviews</Link>
+        </LinksWrapper>
+      </section>
       {isLoading && <Loading isLoading={isLoading} />}
       <ToastContainer />
     </>

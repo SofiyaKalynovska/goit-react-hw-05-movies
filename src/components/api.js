@@ -6,7 +6,6 @@ const API_KEY = '4707371d53aa0467b337f4fda109b465';
 
 export const fetchTrending = async () => {
   const response = await axios.get(`trending/movie/day?api_key=${API_KEY}&page=${1}`)
-  console.log(response.data)
   return response.data
 }
 export const fetchSearchMovie = async (query) => {
@@ -33,11 +32,7 @@ export const fetchMovieCast = async (movie_id) => {
 }
 
 export const fetchMovieReviews = async (movie_id) => {
-  const response = await axios.get(`movie/${movie_id}/reviews?`, {
-    params: {
-      api_key: API_KEY,
-    }
-  })
-  console.log(response.data)
+  const response = await axios.get(`movie/${movie_id}/reviews?api_key=${API_KEY}`)
+ 
   return response.data
 }
