@@ -9,13 +9,12 @@ import { ReactComponent as SearchIcon } from '../../icons/SearchIcon.svg';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState, useEffect } from 'react';
-import { useSearchParams, useLocation } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import { fetchSearchMovie } from 'components/api';
 
 const Movies = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
-  const location = useLocation();
   const movieToSearch = searchParams.get('query') ?? '';
 
   useEffect(() => {
@@ -67,9 +66,7 @@ const Movies = () => {
           <SearchFormBtnLabel>Search</SearchFormBtnLabel>
         </SearchFormBtn>
       </SearchForm>
-      {!!movies.length && (
-        <List listToRender={movies} addedPath={''} state={{ from: location }} />
-      )}
+      {!!movies.length && <List listToRender={movies} addedPath={''} />}
       <ToastContainer />
     </>
   );

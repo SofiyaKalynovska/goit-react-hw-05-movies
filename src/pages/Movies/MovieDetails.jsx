@@ -70,12 +70,12 @@ const MovieDetails = () => {
         <AdditionalInfoTitle>Additional information</AdditionalInfoTitle>
         <ul>
           <AdditionalInfoLinkItem>
-            <AdditionalInfoLink to="cast" state={location.state}>
+            <AdditionalInfoLink to="cast">
               Cast
             </AdditionalInfoLink>
           </AdditionalInfoLinkItem>
           <AdditionalInfoLinkItem>
-            <AdditionalInfoLink to="reviews" state={location.state}>
+            <AdditionalInfoLink to="reviews">
               Reviews
             </AdditionalInfoLink>
           </AdditionalInfoLinkItem>
